@@ -1,0 +1,54 @@
+<h4 class="text-center">Crea un nuevo usuario</h4>
+<hr>
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="enviar()">
+    <div>
+        <!-- ---------------------- PRIMER INPUT ------------------ -->
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="name">Name:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Name" formControlName="name" [class.is-invalid]="validName">
+                <div *ngIf="validName" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+            
+        </div>
+        <!-- ---------------------- SEGUNDO INPUT ------------------ -->
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="job">Job:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Job" formControlName="job" [class.is-invalid]="validJob">
+                <div *ngIf="validJob" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+        <!-- ---------------------- TERCER INPUT ------------------ -->
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="email">Email:</label>
+            <div class="col-9">
+                <input class="form-control" type="email" name="" placeholder="Email" formControlName="email" [class.is-invalid]="validEmail">
+                <div *ngIf="validEmail" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+        <!-- ---------------------- Validación personalizada de password ------------------ -->
+        <div class="row form-group">
+            <label for="" class="col-3 col-form-label text-center font-weight-bold">Password:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" placeholder="Contraseña" formControlName="pass1" [class.is-invalid]="Pass1">
+                <div *ngIf="Pass1" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="" class="col-3 col-form-label text-center font-weight-bold">Confirm:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" placeholder="Confirmar contraseña" formControlName="pass2" [class.is-invalid]="Pass2">
+            </div>
+        </div>
+
+        <!-- ---------------------- BOTÓN ENVIAR ------------------ -->
+        <div class="form-group row">
+            <div type="button" class="col-12 input-group mt-3">
+                <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+

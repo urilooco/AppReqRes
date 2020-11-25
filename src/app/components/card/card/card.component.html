@@ -1,0 +1,9 @@
+<div class="card-columns">
+    <div *ngFor="let item of items" class="card btn" (click)="verUsers(item)">
+        <img [src]="item.avatar" alt="" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{item.first_name}}</h5>
+        </div>
+    </div>
+</div>
+
