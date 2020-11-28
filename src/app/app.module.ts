@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 // Para trabajar con formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchUserComponent } from './components/searchUser/search-user/search-user.component';
+import { PasswordPipe } from './pipes/password/password.pipe';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { SearchUserComponent } from './components/searchUser/search-user/search-
     GetUserComponent,
     CardComponent,
     CreateUserComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    PasswordPipe
   ],
   imports: [
     BrowserModule,

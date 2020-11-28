@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppReqResService } from 'src/app/services/app-req-res.service';
 import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class CreateUserComponent implements OnInit {
 
   // variable para almacenar formulario
   form: FormGroup;
+  formData: FormData;
+  response: any = [];
+  submited: boolean = false;
 
   // Getters de los controles
   get validName(){
@@ -36,7 +40,7 @@ export class CreateUserComponent implements OnInit {
 
   }
 
-  constructor( private fB: FormBuilder, private CustomVal: ValidationService ) {
+  constructor( private fB: FormBuilder, private CustomVal: ValidationService, private appReqRes: AppReqResService ) {
     this.createForm();
   }
 
@@ -59,15 +63,31 @@ export class CreateUserComponent implements OnInit {
 
   enviar(){
     console.log(this.form);
-    if(this.form.invalid){
-      return Object.values( this.form.controls ).forEach(control=>{
-        if( control instanceof FormGroup ){
-          return Object.values(control.controls).forEach( control => control.markAsTouched())
-        }else{
-          control.markAsTouched();
-        }
+    if(this.form.invalid) {
+      return Object.values( this.form.controls ).forEach( control => {
+        control.markAsTouched();
+        this.submited = false;
+      } )
+    }else{
+      let data = {
+        'name': this.form.get('name').value,
+        'job': this.form.get('job').value,
+        'email': this.form.get('email').value,
+        'password': this.form.get('pass1').value,
+      }
+
+      this.appReqRes.addUsers(data).subscribe( (data: any) => {
+        this.response = data;
+        this.submited = true;
+        console.log(this.response);
       })
+      
     }
+  }
+
+  addOther(){
+    this.submited = false;
+    this.form.reset();
   }
 
 }

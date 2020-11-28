@@ -14,16 +14,28 @@ export class AppReqResService {
     return this.http.get(url);
   }
 
-  routeListUsers(){
-    return this.getQuery(`?page=2`).pipe(map(data =>{
-      return data;
-    }));
+  getUsers(id){
+    return this.getQuery(`/${id}`);
   }
 
-  getUsers(){
-    return this.getQuery('?page=2').pipe(map(data => {
-      return data['id'].items;
-    }))
+  searchUsers(id){
+    return this.getQuery(`/${id}`);
+  }
+
+  getAllUsers(){
+    return this.getQuery('');
+  }
+
+  getAllUsers2(){
+    return this.getQuery('?page=2');
+  }
+
+  addUsers(data: any){
+    return this.http.post('https://reqres.in/api/users', data);
+  }
+
+  deleteUser(id){
+    return this.http.delete(`https://reqres.in/api/users/${id}`);
   }
 
 }

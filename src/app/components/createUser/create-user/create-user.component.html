@@ -52,3 +52,39 @@
     </div>
 </form>
 
+<div *ngIf="submited" class="alert alert-success text-center" role="alert">
+    USUARIO CREADO CON ÉXITO
+  </div>
+
+<div *ngIf="submited" class="row col-12 border my-2 py-2 rounded-lg">
+    <div class="col-12 pt-2">
+        <h2 class="text-center">Datos del nuevo usuario</h2>
+        <div class="row pt-3 mb-2">
+            <div class="col-6">
+                <h5><b>Name:</b> {{response.name}}</h5>
+            </div>
+
+
+            <div class="col-6">
+                <h5><b>Job:</b> {{response.job}}</h5>
+            </div>
+
+
+            <div class="pt-2 col-6">
+                <h5><b>Email:</b> {{response.email}}</h5>
+            </div>
+
+            <div class="pt-2 col-6">
+                <h5><b>User ID:</b> {{response.id}}</h5>
+            </div>
+            <div class="pt-2 col-6">
+                <h5><b>Password:</b> {{response.password | password}}</h5>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="submited" class=" row col-12">
+        <button class="ml-3 btn btn-block btn-warning" (click)="addOther()">Crear nuevo usuario</button>
+    </div>
+</div>
+
+

@@ -1,1 +1,27 @@
-<p>search-user works!</p>
+
+<h2 class="display-6 text-center mb-5">Busca un usuario</h2>
+<div class="row">
+    <div class="col-12">
+        <input type="text" class="form-control" placeholder="Buscar" (keyup)="search(busqueda.value)" #busqueda>
+    </div>
+</div>
+<div class="mx-auto alert alert-danger text-center my-4" *ngIf="error">
+    <h3>Error: Usuario no encontrado</h3>
+</div>
+<div class="container col-12">
+    <div class="row pt-3" *ngIf="!searching && !error">
+        <div class="row border col-8 pt-3 justify-content-center">
+            <div class="col-3">
+                <img src="{{result.avatar}}" alt="" class="w-100 pb-3">
+            </div>
+            <div class="col-8 ml-4 pt-3">
+                <div class="row mb-4">
+                    <h5><b>Nombre:</b> {{result.first_name}} {{result.last_name}}</h5>
+                </div>
+                <div class="row mb-4">
+                    <h5><b>Email:</b> <span class="text-primary"> {{result.email}}</span></h5>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
